@@ -25,12 +25,12 @@ ngx.header["Expires"] = "Mon, 20 Jul 1999 23:00:00 GMT"
 ngx.header["Content-Type"] = 'text/html; charset=UTF-8'
 
 if args['action'] == 'imgList' then
-	local page ,user 	= args['page'] ,args['user']
+	local page ,user 	= args['page'] ,args['user'] or 'acol'
 	local rows 			= args['rows'] or config['content_num']
 	local callback 		= args['callback'] or ''
 
 	local Img = Img:new()
-	local data = Img:get_data('acol' , page ,rows)
+	local data = Img:get_data(user , page ,rows)
 
 	Img:close_db()
 	print( callback ..'('.. cjson.encode( data ) ..')' )
