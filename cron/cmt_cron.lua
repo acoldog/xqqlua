@@ -26,7 +26,7 @@ else
     sid = sid['oid']
 end
 --  取全部未处理的评论
-local sql = 'SELECT id,diary_id FROM ab_comment WHERE id>'.. sid ..' AND diary_id != 0 ORDER BY id ASC LIMIT '.. cron_num;
+local sql = 'SELECT id,diary_id FROM ab_comment_new WHERE id>'.. sid ..' AND diary_id != 0 ORDER BY id ASC LIMIT '.. cron_num;
 
 local data = db:get_all(sql)
 
